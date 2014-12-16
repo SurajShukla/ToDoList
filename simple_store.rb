@@ -27,7 +27,7 @@ class SimpleStore
   end
 
   def self.all
-    item.values
+    items.values
   end
 
   def self.create(*arguments)

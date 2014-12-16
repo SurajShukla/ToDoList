@@ -1,4 +1,4 @@
-require 'simple_store.rb'
+require './simple_store.rb'
 
 class Task < SimpleStore
   attr_accessor :description
