@@ -10,16 +10,9 @@ describe 'ToDo App' do
   end
 
   describe "POST /" do
-    before do
-      post '/', description: "Need to learn meta-programming"
-    end
-    it "redirects" do
-      expect(last_response.redirection?).to be_truthy
-    end
-
     it "redirects to the home page after creating a new task" do
-      follow_redirect!
-      expect(last_request.path).to eq('/')
+      post '/', description: "Need to learn meta-programming"
+      expect(last_response).to be_a_redirect and include("Location" => '/')
     end
   end
 end
