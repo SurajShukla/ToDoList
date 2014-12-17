@@ -1,5 +1,5 @@
 require 'rspec'
-require './simple_store'
+require_relative '../simple_store'
 
 describe SimpleStore do
   describe 'instance methods' do

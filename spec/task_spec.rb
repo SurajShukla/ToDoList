@@ -1,3 +1,4 @@
+require 'rspec'
 require_relative '../task.rb'
 
 describe Task do 
