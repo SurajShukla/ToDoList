@@ -12,13 +12,12 @@ describe 'ToDo App' do
   describe "POST /" do
     it "creates a new task" do
       post '/', description: "Need to learn meta-programming"
-      expect(last_response.status).to eq 200
+      expect(last_response.status).to eq 302
     end
 
     it "redirects to the home page after creating a new task" do
       post '/', description: "Need to learn meta-programming"
-      puts last_response.class
-      expect(last_response.redirect?).to be_true
+      expect(last_response.redirect?).to be_truthy
       follow_redirect!
       expect(last_request.path).to eq('/')
     end
