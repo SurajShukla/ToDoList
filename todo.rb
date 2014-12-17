@@ -1,4 +1,4 @@
-$LOAD_PATH.unshift File.dirname(__FILE__)
+$LOAD_PATH.unshift __dir__
 
 require 'sinatra/base'
 require 'task'
