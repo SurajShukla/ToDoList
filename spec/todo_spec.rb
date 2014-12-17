@@ -15,4 +15,11 @@ describe 'ToDo App' do
       expect(last_response).to be_a_redirect and include("Location" => '/')
     end
   end
+
+  describe "GET /" do
+    it "displays Home page" do
+      get '/'
+      expect(last_response).to be_ok
+    end
+  end
 end
