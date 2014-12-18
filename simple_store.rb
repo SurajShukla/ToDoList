@@ -44,6 +44,11 @@ class SimpleStore
     items.fetch(id.to_i)
   end
 
+  def self.delete_all
+    self.items.clear
+    @next_id = 0
+  end
+
   def self.remove(item)
     items.delete(item.id)
   end

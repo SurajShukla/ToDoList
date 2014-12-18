@@ -9,17 +9,29 @@ describe 'ToDo App' do
     ToDoApp.new
   end
 
-  describe "POST /" do
-    it "redirects to the home page after creating a new task" do
-      post '/', description: "Need to learn meta-programming"
-      expect(last_response).to be_a_redirect and include("Location" => '/')
-    end
-  end
+  describe "routes" do
+    after { Task.delete_all }
 
-  describe "GET /" do
-    it "displays Home page" do
-      get '/'
-      expect(last_response).to be_ok
+    describe "POST /" do
+      it "redirects to the home page after creating a new task" do
+        post '/', description: "Need to learn meta-programming"
+        expect(last_response).to be_a_redirect and include("Location" => '/')
+      end
+    end
+
+    describe "GET /" do
+      it "displays Home page" do
+        get '/'
+        expect(last_response).to be_ok
+      end
+    end
+
+    describe "PATCH /:id" do
+      it 'redirects to a home page after updating a task' do
+        task = Task.create(description: 'Add a test')
+        patch "/#{task.id}"
+        expect(last_response).to be_a_redirect and include("Location" => '/')
+      end
     end
   end
 end
