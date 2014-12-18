@@ -2,7 +2,19 @@
 
 <ul>
   <% @tasks.each do |task| %>
-    <li><%= task %></li>
+    <li>
+    <form action="/<%= task.id %>", method="post" style="display: inline">
+      <input type="hidden" name="_method" value="patch">
+      <input type="hidden" name="done" value="1">
+      <input type="submit" value="&#10003;">
+    </form>
+
+    <% if task.done? %>
+      <s><%= task %></s>
+    <% else %>
+      <%= task %>
+    <% end %>
+    </li>
   <% end %>
 </ul>
 
