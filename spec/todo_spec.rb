@@ -33,5 +33,13 @@ describe 'ToDo App' do
         expect(last_response).to be_a_redirect and include("Location" => '/')
       end
     end
+
+    describe "DELETE /:id" do
+      it 'redirects to the home page after deleting the task' do
+        task = Task.create(description: 'Add a test')
+        delete "/#{task.id}"
+        expect(last_response).to be_a_redirect and include("Location" => '/')
+      end
+    end
   end
 end

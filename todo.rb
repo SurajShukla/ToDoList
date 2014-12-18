@@ -19,4 +19,10 @@ class ToDoApp < Sinatra::Base
     task.update(done: params[:done])
     redirect '/'
   end
+
+  delete '/:id' do
+    task = Task.get(params[:id])
+    task.destroy
+    redirect '/'
+  end
 end

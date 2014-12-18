@@ -3,10 +3,15 @@
 <ul>
   <% @tasks.each do |task| %>
     <li>
-    <form action="/<%= task.id %>", method="post" style="display: inline">
+    <form action="/<%= task.id %>" method="post" style="display: inline">
       <input type="hidden" name="_method" value="patch">
       <input type="hidden" name="done" value="1">
       <input type="submit" value="&#10003;">
+    </form>
+
+    <form action="/<%= task.id %>" method='post' style='display: inline'>
+      <input type='hidden' name="_method" value='delete'>
+      <input type="submit" value="&times;">
     </form>
 
     <% if task.done? %>
