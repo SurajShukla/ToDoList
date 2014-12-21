@@ -1,13 +1,11 @@
-require './simple_store.rb'
+class Task
+  include DataMapper::Resource
 
-class Task < SimpleStore
-  attr_accessor :description, :done
+  property :id, Serial
+  property :done, Boolean
+  property :description, String
 
   def to_s
-    description
-  end
-
-  def done?
-    done
+    description.to_s
   end
 end
