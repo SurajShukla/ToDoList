@@ -1,0 +1,16 @@
+development:
+  username: arup
+  password: arup
+  host: localhost
+  database_name: to_do_app
+test:
+  username: arup
+  password: arup
+  host: localhost
+  database_name: to_do_app_test
+production:
+  username: ''
+  password: ''
+  host: ''
+  database_name: ''
+
