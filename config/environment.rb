@@ -13,10 +13,10 @@ host          = config_env['host']
 DATABASE_URL = case ENV['RACK_ENV']
                when 'production'
                  ENV['DATABASE_URL']
-               when 'test', 'developement'
+               when 'test', 'development'
                  "postgres://#{username}:#{password}@#{host}/#{database_name}"
                end
 
-DataMapper::Logger.new($stdout, :debug) if Sinatra::Base.environment == :developement
+DataMapper::Logger.new($stdout, :debug) if Sinatra::Base.environment == :development
 DataMapper.setup(:default, DATABASE_URL)
 DataMapper.finalize
