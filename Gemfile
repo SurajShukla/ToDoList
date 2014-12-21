@@ -5,9 +5,6 @@ gem 'data_mapper'
 gem 'dm-postgres-adapter'
 
 group :test do
+  gem 'rack-test'
   gem 'rspec'
 end
-
-group :test do
-  gem 'rack-test'
-end 

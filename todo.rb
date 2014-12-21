@@ -1,7 +1,5 @@
 $LOAD_PATH.unshift __dir__
 
-require 'sinatra/base'
-require 'data_mapper'
 require 'task'
 
 DATABASE_URL = ENV['DATABASE_URL'] || 'postgres://arup:arup@localhost/to_do_app'
