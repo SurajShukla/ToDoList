@@ -8,7 +8,12 @@ describe List do
   subject { described_class.new([task1, task2, task3]) }
 
   describe '#to_markdown' do
-    List.const_set('TEMPLATE', ERB.new(DATA.read, nil, '-'))
+    html = <<-ERB
+    <% @tasks.each do |task| -%>
+    - [<%= task.done? ? 'x' : ' ' %>] <%= task %>
+    <% end -%>
+    ERB
+    List.compile_html_to_erb(html: html)
     result = <<-HTML
     - [ ] Feed the cat 
     - [x] Feed the cow 
@@ -17,9 +22,3 @@ describe List do
     expect(subject.to_markdown).to eq(result)
   end
 end
-
-
-__END__
-<% @tasks.each do |task| -%>
-- [<%= task.done? ? 'x' : ' ' %>] <%= task %>
-<% end -%>
