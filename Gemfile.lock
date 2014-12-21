@@ -55,6 +55,7 @@ GEM
     do_postgres (0.10.14)
       data_objects (= 0.10.14)
     fastercsv (1.5.5)
+    gist (4.3.0)
     json (1.8.1)
     json_pure (1.8.1)
     multi_json (1.10.1)
@@ -89,6 +90,7 @@ PLATFORMS
 DEPENDENCIES
   data_mapper
   dm-postgres-adapter
+  gist
   rack-test
   rspec
   sinatra
