@@ -1,5 +1,4 @@
-require 'rspec'
-require_relative '../simple_store'
+require_relative 'spec_helper.rb'
 
 describe SimpleStore do
   describe 'instance methods' do

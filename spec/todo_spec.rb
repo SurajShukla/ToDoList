@@ -1,6 +1,4 @@
-require_relative '../todo.rb'
-require 'rack/test'
-require 'rspec'
+require_relative 'spec_helper.rb'
 
 describe 'ToDo App' do
   include Rack::Test::Methods
@@ -10,8 +8,6 @@ describe 'ToDo App' do
   end
 
   describe "routes" do
-    after { Task.delete_all }
-
     describe "POST /" do
       it "redirects to the home page after creating a new task" do
         post '/', description: "Need to learn meta-programming"

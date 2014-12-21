@@ -1,5 +1,4 @@
-require 'rspec'
-require_relative '../task.rb'
+require_relative 'spec_helper.rb'
 
 describe Task do 
   subject { described_class.new(description: "Feed the cat") }

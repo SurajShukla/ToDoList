@@ -10,8 +10,6 @@ password      = config_env['password']
 database_name = config_env['database_name']
 host          = config_env['host']
 
-puts config_env, password
-
 DATABASE_URL = case ENV['RACK_ENV']
                when 'production'
                  ENV['DATABASE_URL']
