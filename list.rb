@@ -1,22 +1,18 @@
+require_relative "./lib/export/github_markdown_template.rb"
+
 class List
-
-  @@template = ERB.new(File.read('views/list.erb'), nil, '-')
-
-  def initialize(tasks)
-    @tasks = tasks
+  def initialize(lists)
+    @lists = lists
   end
 
-  def to_markdown
-    @@template.result(binding)
+  def to_gist
+    gist = build_gist_template
+    Gist.gist(gist, filename: 'To Do List.md')
   end
 
-  def self.compile_html_to_erb(opts = {})
-    if !opts[:html].nil?
-      @@template = ERB.new(opts[:html], nil, '-')
-    elsif !opts[:filepath].nil?
-      @@template = ERB.new(File.read(opts[:filepath]), nil, '-')
-    else
-      raise KeyError, "key not found: #{opts.keys}"
-    end
+  private
+
+  def build_gist_template
+    Export::GitHubMarkdownTemplate.new.to_markdown(binding)
   end
 end

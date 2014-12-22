@@ -29,8 +29,7 @@ class ToDoApp < Sinatra::Base
   end
 
   post '/export' do
-    list = List.new(Task.all)
-    gist = Gist.gist(list.to_markdown, filename: 'To Do List.md')
+    gist = List.new(Task.all).to_gist
     redirect gist['html_url']
   end
 end
