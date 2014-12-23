@@ -1,4 +1,4 @@
-require_relative "./lib/export/github_markdown_template.rb"
+require_relative "./lib/converter/gist.rb"
 
 class List
   def initialize(lists)
@@ -6,12 +6,7 @@ class List
   end
 
   def to_gist
-    Gist.gist(build_gist_template, filename: 'To Do List.md')
-  end
-
-  private
-
-  def build_gist_template
-    Export::GitHubMarkdownTemplate.new.to_markdown(binding)
+    result = Converter::Gist.new(@lists).convert
+    Gist.gist(result, filename: 'To Do List.md')
   end
 end
