@@ -6,8 +6,7 @@ class List
   end
 
   def to_gist
-    gist = build_gist_template
-    Gist.gist(gist, filename: 'To Do List.md')
+    Gist.gist(build_gist_template, filename: 'To Do List.md')
   end
 
   private
