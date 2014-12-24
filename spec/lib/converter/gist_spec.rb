@@ -3,6 +3,20 @@ require_relative '../../spec_helper.rb'
 describe Converter::Gist do
   subject { described_class.new([:a, :b]) }
 
+  describe "#initialize" do
+    context 'one argument recives' do
+      it 'creates' do
+        expect(subject.collection).to eq([:a, :b])
+      end
+    end
+
+    context 'no argument is supplied' do
+      it 'raises argument error' do
+        expect { described_class.new }.to raise_error(ArgumentError)
+      end
+    end
+  end
+
   describe '#convert' do
     let(:template) { double("Template") }
     let(:binding) { double('Binding') }
