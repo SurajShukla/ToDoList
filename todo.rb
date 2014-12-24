@@ -32,4 +32,19 @@ class ToDoApp < Sinatra::Base
     gist = List.new(Task.all).to_gist
     redirect gist['html_url']
   end
+
+  get '/:id' do
+    @task = Task.get(params[:id])
+    erb :show
+  end
+
+  put "/:id" do
+    task = Task.get(params[:id])
+    task.update(
+      description: params[:description],
+      done: params[:done],
+      due_date: params[:due_date]
+    )
+    redirect '/'
+  end
 end

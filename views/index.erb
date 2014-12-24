@@ -8,17 +8,19 @@
       <input type="hidden" name="done" value="1">
       <input type="submit" value="&#10003;">
     </form>
-
     <form action="/<%= task.id %>" method='post' style='display: inline'>
       <input type='hidden' name="_method" value='delete'>
       <input type="submit" value="&times;">
     </form>
-
     <% if task.done? %>
       <s><%= task %></s>
     <% else %>
       <%= task %>
     <% end %>
+    <% if task.due_date %>
+      (Due <%= task.due_date %>)
+    <% end %>
+    <small><a href="/<%= task.id %>">Details</a></small>
     </li>
   <% end %>
 </ul>
