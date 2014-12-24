@@ -1,7 +1,7 @@
 module Converter
   class Gist
     class ReaderContext
-      def initialze(collection)
+      def initialize(collection)
         @collection = collection
       end
 
@@ -9,6 +9,8 @@ module Converter
         binding
       end
     end
+
+    attr_reader :collection
 
     def initialize(collection)
       @collection = collection
