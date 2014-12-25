@@ -20,6 +20,9 @@
     <% if task.due_date %>
       (Due <%= task.due_date %>)
     <% end %>
+    <% if @forecast.has_key?(task.due_date) %>
+      <img src="<%= @forecast[task.due_date] %>" height='16'>
+    <% end %>
     <small><a href="/<%= task.id %>">Details</a></small>
     </li>
   <% end %>

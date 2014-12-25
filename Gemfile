@@ -10,3 +10,5 @@ group :test do
   gem 'rspec'
 end
 gem 'gist'
+gem 'faraday'
+gem 'faraday_middleware'
