@@ -36,14 +36,13 @@ class ToDoApp < Sinatra::Base
   end
 
   get '/:id' do
-    puts "Id as #{params[:id]}"
     @task = Task.get(params[:id])
     puts "task is #{@task}"
     erb :show
   end
 
   put "/:id" do
-    @task = Task.get(params[:id])
+    task = Task.get(params[:id])
     task.update(
       description: params[:description],
       done: params[:done],

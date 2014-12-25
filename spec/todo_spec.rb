@@ -17,6 +17,7 @@ describe 'ToDo App' do
 
     describe "GET /" do
       it "displays Home page" do
+        allow(Forecast).to receive(:ten_day_forecast).with('GA', 'Atlanta')
         get '/'
         expect(last_response).to be_ok
       end
@@ -35,6 +36,19 @@ describe 'ToDo App' do
         task = Task.create(description: 'Add a test')
         delete "/#{task.id}"
         expect(last_response).to be_a_redirect and include("Location" => '/')
+      end
+    end
+
+    describe "/export" do
+      let(:gist) { double('Gist') }
+      let(:url) { "http://example.org/gist" }
+
+      it 'exports as a gist' do
+        allow_any_instance_of(List).to receive(:to_gist) { gist }
+        allow(gist).to receive(:[]).with('html_url').and_return(url)
+        post "/export"
+        expect(last_response).to be_redirect
+        expect(last_response.location).to eq(url)
       end
     end
   end
