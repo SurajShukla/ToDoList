@@ -37,7 +37,6 @@ class ToDoApp < Sinatra::Base
 
   get '/:id' do
     @task = Task.get(params[:id])
-    puts "task is #{@task}"
     erb :show
   end
 

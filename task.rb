@@ -11,7 +11,7 @@ class Task
   end
 
   def due_date=(date)
-    date = nil if date.empty?
+    date = nil if date.to_s.empty?
     super date
   end
 end
