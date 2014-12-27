@@ -9,6 +9,11 @@ group :test do
   gem 'rack-test'
   gem 'rspec'
 end
+
 gem 'gist'
 gem 'faraday'
 gem 'faraday_middleware'
+
+group :test, :development do
+  gem 'pry'
+end

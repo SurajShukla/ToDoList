@@ -1,5 +1,11 @@
 class Forecast
-  CONNECTION = Faraday.new(url: 'http://api.wunderground.com') do |conn|
+  class EnvironmentVarMissing < standarderror
+    def initialize(env_var)
+      super "#{env_var}-environment variable is not set"
+    end
+  end
+
+  connection = Faraday.new(url: 'http://api.wunderground.com') do |conn|
     conn.response :json, :content_type => /\bjson$/
     conn.adapter Faraday.default_adapter
   end
@@ -7,6 +13,7 @@ class Forecast
   WEATHER_UNDERGROUND_API_KEY = ENV['WEATHER_UNDERGROUND_API_KEY']
 
   def self.ten_day_forecast(state, city)
+    raise EnvironmentVarMissing.new('WEATHER_UNDERGROUND_API_KEY') unless WEATHER_UNDERGROUND_API_KEY
     url = "/api/#{WEATHER_UNDERGROUND_API_KEY}/forecast10day/q/#{state}/#{city}.json"
     consume(CONNECTION.get(url).body)
   end
