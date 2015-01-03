@@ -1,11 +1,11 @@
 class Forecast
-  class EnvironmentVarMissing < standarderror
+  class EnvironmentVarMissing < StandardError
     def initialize(env_var)
       super "#{env_var}-environment variable is not set"
     end
   end
 
-  connection = Faraday.new(url: 'http://api.wunderground.com') do |conn|
+  CONNECTION = Faraday.new(url: 'http://api.wunderground.com') do |conn|
     conn.response :json, :content_type => /\bjson$/
     conn.adapter Faraday.default_adapter
   end
