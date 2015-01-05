@@ -30,12 +30,11 @@ describe Forecast do
   let(:forecast_day) { json['forecast']['simpleforecast']['forecastday']}
 
   describe "::ten_day_forecast" do
-    before(:each) { described_class.send :remove_const, :WEATHER_UNDERGROUND_API_KEY }
 
     context 'when environment variable is set' do
       it 'returns ten day forecasts' do
         allow(described_class).to receive(:consume).with(anything())
-        described_class.const_set('WEATHER_UNDERGROUND_API_KEY', 'axx')
+        stub_const("Forecast::WEATHER_UNDERGROUND_API_KEY", 'axx')
 
         expect(described_class).to receive(:consume).with(anything())
         described_class.ten_day_forecast('wb', 'Kolkata')
@@ -45,7 +44,7 @@ describe Forecast do
     context 'when environment variable is not set' do
       it 'returns ten day forecasts' do
         allow(described_class).to receive(:consume).with(anything())
-        described_class.const_set('WEATHER_UNDERGROUND_API_KEY', nil)
+        stub_const("Forecast::WEATHER_UNDERGROUND_API_KEY", nil)
 
         expect { described_class.ten_day_forecast('wb', 'Kolkata') }.to raise_error(Forecast::EnvironmentVarMissing)
       end
