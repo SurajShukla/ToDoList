@@ -15,7 +15,7 @@ class Task
     super date
   end
 
-  def self.list_tasks(page)
-    self.paginate(:page => page, :per_page => 3)
+  def self.list_tasks(page, per)
+    self.paginate(:page => page, :per_page => per || 3)
   end
 end
