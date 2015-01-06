@@ -95,6 +95,7 @@ GEM
     stringex (1.5.1)
     tilt (1.4.1)
     uuidtools (2.1.5)
+    will_paginate (3.0.7)
 
 PLATFORMS
   ruby
@@ -109,3 +110,4 @@ DEPENDENCIES
   rack-test
   rspec
   sinatra
+  will_paginate (~> 3.0.5)

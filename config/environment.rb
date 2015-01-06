@@ -3,6 +3,8 @@ require "bundler"
 Bundler.require(:default)
 Bundler.require(Sinatra::Base.environment)
 
+require 'will_paginate/data_mapper'
+
 config_env = YAML.load(File.read(File.realdirpath("../database.yml", __dir__)))[ENV['RACK_ENV']]
 
 username      = config_env['username']

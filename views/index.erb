@@ -27,6 +27,7 @@
     </li>
   <% end %>
 </ul>
+<%= will_paginate @tasks %>
 
 <form action="/" method="post">
   <input type="text" name="description" placeholder="Add a new task">

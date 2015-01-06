@@ -13,6 +13,7 @@ end
 gem 'gist'
 gem 'faraday'
 gem 'faraday_middleware'
+gem 'will_paginate', '~> 3.0.5'
 
 group :test, :development do
   gem 'pry'

@@ -14,4 +14,8 @@ class Task
     date = nil if date.to_s.empty?
     super date
   end
+
+  def self.list_tasks(page)
+    self.paginate(:page => page, :per_page => 3)
+  end
 end

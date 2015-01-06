@@ -7,8 +7,10 @@ require 'forecast'
 Task.auto_upgrade!
 
 class ToDoApp < Sinatra::Base
+  helpers WillPaginate::Sinatra::Helpers
+
   get "/" do
-    @tasks = Task.all
+    @tasks = Task.list_tasks(params[:page])
     @forecast = Forecast.ten_day_forecast('GA', 'Atlanta')
     erb :index
   end
